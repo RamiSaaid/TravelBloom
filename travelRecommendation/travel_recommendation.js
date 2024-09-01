@@ -27,6 +27,7 @@ function search() {
     if (keywords.includes(input)) {
         let results = '';
 
+        // Check for 'beach' keyword
         if (input === 'beach') {
             results += '<h3>Beach Destinations:</h3>';
             data.countries.forEach(country => {
@@ -43,6 +44,7 @@ function search() {
             });
         }
 
+        // Check for 'temple' keyword
         if (input === 'temple') {
             results += '<h3>Temple Destinations:</h3>';
             data.countries.forEach(country => {
@@ -59,6 +61,7 @@ function search() {
             });
         }
 
+        // Check for 'country' keyword
         if (input === 'country') {
             results += '<h3>Countries:</h3>';
             data.countries.forEach(country => {
@@ -67,7 +70,11 @@ function search() {
         }
 
         // Display results
-        resultsDiv.innerHTML = results;
+        if (results) {
+            resultsDiv.innerHTML = results;
+        } else {
+            resultsDiv.innerHTML = '<p>No results found for your search.</p>';
+        }
     } else {
         resultsDiv.innerHTML = '<p>No results found. Please try "beach," "temple," or "country."</p>';
     }
